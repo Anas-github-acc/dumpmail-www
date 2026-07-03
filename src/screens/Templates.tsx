@@ -35,6 +35,7 @@ import {
   UploadCloud, X, FileCheck2, HardDrive, Library,
   Globe, Send, Mail, BookMarked, ChevronDown, ChevronUp, Settings,
 } from "lucide-react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import {
@@ -1154,6 +1155,45 @@ export default function Templates({
                 userId={userIdProp}
               />
             )}
+
+            {/* ── Template Syntax Tutorial CTA ── */}
+            <div className="space-y-3">
+              <h2 className="text-2xl font-medium tracking-tight">
+                Before writing a Template — Learn how to write Template
+              </h2>
+              <div
+                id="template-syntax-tutorial-cta"
+                className="rounded-lg border-l-[3px] border-l-primary border border-border bg-card px-5 py-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+              >
+                <div className="space-y-2.5 flex-grow">
+                  <div className="flex items-start gap-3">
+                    <code className="shrink-0 font-mono text-[11.5px] px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
+                      {"{{ expression }}"}
+                    </code>
+                    <span className="text-[12px] text-muted-foreground leading-5 pt-px">
+                      Run any JavaScript, extract first name, uppercase, conditionals.
+                      <span className="ml-1 font-mono text-[11px] text-muted-foreground/55">{`{{ lead.split(' ')[0] }}`}</span>
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <code className="shrink-0 font-mono text-[11.5px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                      {"[[ rotating ]]"}
+                    </code>
+                    <span className="text-[12px] text-muted-foreground leading-5 pt-px">
+                      Pick a random phrase on every send, keeps emails unique so Gmail won&apos;t flag bulk sends.
+                      <span className="ml-1 font-mono text-[11px] text-muted-foreground/55">{`[["Hi", "Hello", "Hey"]]`}</span>
+                    </span>
+                  </div>
+                </div>
+                <div className="shrink-0 self-start md:self-center">
+                  <Button asChild className="h-9 px-4 text-[13px] bg-primary text-primary-foreground hover:bg-primary/90 font-medium">
+                    <Link href="/blog/template-syntax">
+                      Read full guide
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
